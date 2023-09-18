@@ -12,6 +12,10 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
+
 // Start server at port 8080!
 func main() {
 	port := os.Getenv("PORT")
@@ -28,6 +32,8 @@ func main() {
 
 // Function that takes care of all the fetching and formatting
 func dolarOperation(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
+
 	// Defines the interfaces which will contain the values retrieved with goquery
 	nombre := []interface{}{}
 	compra := []interface{}{}
