@@ -126,6 +126,6 @@ func dolarOperation(w http.ResponseWriter, r *http.Request) {
 func formatToNumber(str string) float64 {
 	removeSign := strings.Replace(str, "$", "", 1)
 	canConvert := strings.Replace(removeSign, ",", ".", 1)
-	parsed, _ := strconv.ParseFloat(canConvert, 10)
+	parsed, _ := strconv.ParseFloat(canConvert, 64)
 	return parsed
 }
